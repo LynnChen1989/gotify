@@ -25,7 +25,6 @@ var (
 	Mode = mode.Dev
 )
 
-
 func main() {
 	vInfo := &model.VersionInfo{Version: Version, Commit: Commit, BuildDate: BuildDate}
 	mode.Set(Mode)
