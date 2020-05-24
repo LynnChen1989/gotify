@@ -138,7 +138,7 @@ export class CurrentUser {
     public tryReconnect = (quiet = false) => {
         this.tryAuthenticate().catch(() => {
             if (!quiet) {
-                this.snack('Reconnect failed');
+                this.snack('重连失败');
             }
         });
     };

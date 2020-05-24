@@ -7,9 +7,10 @@ DOCKER_BUILD_IMAGE=gotify/build
 DOCKER_WORKDIR=/proj
 DOCKER_RUN=docker run --rm -v "$$PWD/.:${DOCKER_WORKDIR}" -v "`go env GOPATH`/pkg/mod/.:/go/pkg/mod:ro" -w ${DOCKER_WORKDIR}
 DOCKER_GO_BUILD=go build -mod=readonly -a -installsuffix cgo -ldflags "$$LD_FLAGS"
-
+VERSION="0.0.4"
 test: test-coverage test-race test-js
-check: check-go check-swagger check-js
+#check: check-go check-swagger check-js
+check: check-go check-js
 
 require-version:
 	if [ -n ${VERSION} ] && [[ $$VERSION == "v"* ]]; then echo "The version may not start with v" && exit 1; fi
@@ -77,8 +78,7 @@ build-docker-amd64: require-version
 	cd ${DOCKER_DIR} && \
 		docker build \
 		-t gotify/server:latest \
-		-t gotify/server:${VERSION} \
-		-t gotify/server:$(shell echo $(VERSION) | cut -d '.' -f -2) .
+		-t gotify/server:${VERSION} .
 	rm ${DOCKER_DIR}gotify-app
 
 build-docker-arm-7: require-version
@@ -90,7 +90,7 @@ build-docker-arm-7: require-version
 		-t gotify/server-arm7:$(shell echo $(VERSION) | cut -d '.' -f -2) .
 	rm ${DOCKER_DIR}gotify-app
 
-build-docker: build-docker-amd64 build-docker-arm-7
+build-docker: build-docker-amd64
 
 build-js:
 	(cd ui && yarn build)
@@ -113,6 +113,7 @@ build-windows-amd64:
 build-windows-386:
 	${DOCKER_RUN} ${DOCKER_BUILD_IMAGE}:$(GO_VERSION)-windows-386 ${DOCKER_GO_BUILD} -o ${BUILD_DIR}/gotify-windows-386.exe ${DOCKER_WORKDIR}
 
-build: build-linux-arm-7 build-linux-amd64 build-linux-386 build-linux-arm64 build-windows-amd64 build-windows-386
+# build: build-linux-arm-7 build-linux-amd64 build-linux-386 build-linux-arm64 build-windows-amd64 build-windows-386
+build: build-linux-amd64
 
 .PHONY: test-race test-coverage test check-go check-js verify-swagger check download-tools update-swagger package-zip build-docker build-js build

@@ -34,12 +34,12 @@ export class WebSocketStore {
             this.currentUser
                 .tryAuthenticate()
                 .then(() => {
-                    this.snack('WebSocket connection closed, trying again in 30 seconds.');
+                    this.snack('WebSocket 连接关闭, 30 秒后重试.');
                     setTimeout(() => this.listen(callback), 30000);
                 })
                 .catch((error: AxiosError) => {
                     if (error && error.response && error.response.status === 401) {
-                        this.snack('Could not authenticate with client token, logging out.');
+                        this.snack('客户端TOKEN无法认证, 正在退出.');
                     }
                 });
         };

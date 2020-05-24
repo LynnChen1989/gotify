@@ -9,7 +9,6 @@ import Chat from '@material-ui/icons/Chat';
 import DevicesOther from '@material-ui/icons/DevicesOther';
 import ExitToApp from '@material-ui/icons/ExitToApp';
 import Highlight from '@material-ui/icons/Highlight';
-// import GitHubIcon from '@material-ui/icons/GitHub';
 import MenuIcon from '@material-ui/icons/Menu';
 import Apps from '@material-ui/icons/Apps';
 import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
@@ -100,7 +99,8 @@ class Header extends Component<IProps> {
                 <Toolbar className={classes.toolbar}>
                     <div className={classes.title}>
                         <Link to="/" className={classes.link}>
-                            <Typography variant="h5" className={classes.titleName} color="inherit">金鸽系统</Typography>
+                            <Typography variant="h5" className={classes.titleName} color="inherit">金鸽系统
+                            </Typography>
                         </Link>
                         {/*去掉版本信息*/}
                         {/*<a*/}
