@@ -46,7 +46,7 @@ export default class AddEditDialog extends Component<IProps, IState> {
                 aria-labelledby="form-dialog-title"
                 id="add-edit-user-dialog">
                 <DialogTitle id="form-dialog-title">
-                    {isEdit ? 'Edit ' + this.props.name : '新建一个用户'}
+                    {isEdit ? '编辑 ' + this.props.name : '新建一个用户'}
                 </DialogTitle>
                 <DialogContent>
                     <TextField
@@ -65,7 +65,7 @@ export default class AddEditDialog extends Component<IProps, IState> {
                         type="password"
                         value={pass}
                         fullWidth
-                        label={isEdit ? 'Pass (empty if no change)' : '密码 *'}
+                        label={isEdit ? '无改变留空' : '密码 *'}
                         onChange={this.handleChange.bind(this, 'pass')}
                     />
                     <FormControlLabel

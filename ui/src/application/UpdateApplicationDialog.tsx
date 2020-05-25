@@ -41,16 +41,16 @@ export default class UpdateDialog extends Component<IProps, IState> {
                 onClose={fClose}
                 aria-labelledby="form-dialog-title"
                 id="app-dialog">
-                <DialogTitle id="form-dialog-title">Update an application</DialogTitle>
+                <DialogTitle id="form-dialog-title">更新应用</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        An application is allowed to send messages.
+                        应用允许发送消息.
                     </DialogContentText>
                     <TextField
                         autoFocus
                         margin="dense"
                         className="name"
-                        label="Name *"
+                        label="应用名 *"
                         type="text"
                         value={name}
                         onChange={this.handleChange.bind(this, 'name')}
@@ -59,7 +59,7 @@ export default class UpdateDialog extends Component<IProps, IState> {
                     <TextField
                         margin="dense"
                         className="description"
-                        label="Short Description"
+                        label="描述"
                         value={description}
                         onChange={this.handleChange.bind(this, 'description')}
                         fullWidth
@@ -67,7 +67,7 @@ export default class UpdateDialog extends Component<IProps, IState> {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={fClose}>Cancel</Button>
+                    <Button onClick={fClose}>取消</Button>
                     <Tooltip title={submitEnabled ? '' : 'name is required'}>
                         <div>
                             <Button
@@ -76,7 +76,7 @@ export default class UpdateDialog extends Component<IProps, IState> {
                                 onClick={submitAndClose}
                                 color="primary"
                                 variant="contained">
-                                Update
+                                更新
                             </Button>
                         </div>
                     </Tooltip>
