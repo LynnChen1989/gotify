@@ -117,3 +117,4 @@ build-windows-386:
 build: build-linux-amd64
 
 .PHONY: test-race test-coverage test check-go check-js verify-swagger check download-tools update-swagger package-zip build-docker build-js build
+
